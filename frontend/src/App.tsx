@@ -4,15 +4,23 @@ import { FlightList } from './components/FlightList/FlightList';
 import { Loading } from './components/Loading/Loading';
 import { useFlights } from './hooks/useFlights';
 import { useSearchHistory } from './hooks/useSearchHistory';
+import { useToast } from './contexts/ToastContext';
 import { FlightQueryParams } from './types/flight';
 import { AlertCircle, History } from 'lucide-react';
 
 function App() {
   const { flights, loading, error, total, searchFlights, clearFlights } = useFlights();
   const { history, addToHistory } = useSearchHistory();
+  const { showToast } = useToast();
   const [hasSearched, setHasSearched] = useState(false);
 
   const handleSearch = async (params: FlightQueryParams) => {
+    // Check if departure and arrival cities are the same
+    if (params.dcity && params.acity && params.dcity.toUpperCase() === params.acity.toUpperCase()) {
+      showToast('出发城市和到达城市不能相同，请重新输入！', 'error');
+      return;
+    }
+    
     setHasSearched(true);
     // Ensure type is always defined with default value
     const historyItem = {

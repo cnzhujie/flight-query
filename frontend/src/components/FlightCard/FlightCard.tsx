@@ -42,11 +42,6 @@ export const FlightCard: React.FC<FlightCardProps> = ({ flight }) => {
           <div className="text-2xl font-bold text-primary-600">
             ¥{flight.price}
           </div>
-          {flight.discount < 1 && (
-            <div className="text-sm text-green-600 bg-green-50 px-2 py-1 rounded-full">
-              {Math.round(flight.discount * 10)}折
-            </div>
-          )}
         </div>
       </div>
 
@@ -61,11 +56,6 @@ export const FlightCard: React.FC<FlightCardProps> = ({ flight }) => {
         <div className="flex-1 mx-4">
           <div className="relative">
             <div className="h-px bg-gray-300"></div>
-            <div className="absolute top-1/2 left-0 right-0 flex items-center justify-center">
-              <div className="bg-white px-2">
-                <Clock className="h-4 w-4 text-gray-400" />
-              </div>
-            </div>
           </div>
           <div className="text-center text-xs text-gray-500 mt-1">
             {formatDuration(flight.departureTime, flight.arrivalTime)}
@@ -81,8 +71,7 @@ export const FlightCard: React.FC<FlightCardProps> = ({ flight }) => {
       </div>
 
       <div className="flex items-center justify-between text-sm text-gray-600">
-        <div className="flex items-center space-x-2">
-          <MapPin className="h-4 w-4" />
+        <div>
           <span>{flight.plane}</span>
         </div>
         

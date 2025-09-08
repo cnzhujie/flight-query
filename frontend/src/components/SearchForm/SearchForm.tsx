@@ -109,7 +109,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit, loading = fals
                 value={formData.dcity}
                 onChange={(e) => handleInputChange('dcity', e.target.value)}
                 placeholder="输入城市三字码 (如: PEK)"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm"
                 maxLength={3}
                 required
               />
@@ -149,7 +149,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit, loading = fals
                 value={formData.acity}
                 onChange={(e) => handleInputChange('acity', e.target.value)}
                 placeholder="输入城市三字码 (如: SHA)"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm"
                 maxLength={3}
                 required
               />
@@ -170,7 +170,8 @@ export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit, loading = fals
         </div>
 
         {/* Dates */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="space-y-4">
+          {/* Departure Date */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               出发日期
@@ -188,6 +189,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit, loading = fals
             </div>
           </div>
 
+          {/* Return Date */}
           {showReturnDate && (
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
